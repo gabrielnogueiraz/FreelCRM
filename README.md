@@ -126,14 +126,6 @@ O projeto é totalmente responsivo e funciona perfeitamente em:
 - Tablet
 - Mobile
 
-## 🎯 Próximos Passos
-
-- [ ] Implementar notificações push
-- [ ] Adicionar relatórios avançados
-- [ ] Integração com calendário
-- [ ] Exportação de dados
-- [ ] Temas personalizáveis
-
 ## 📄 Licença
 
 MIT License - veja o arquivo LICENSE para detalhes.
