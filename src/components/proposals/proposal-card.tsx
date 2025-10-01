@@ -146,7 +146,7 @@ export function ProposalCard({ proposal, onEdit, onDelete, isDragging = false }:
               <DollarSign className="h-4 w-4 text-green-600" />
             </div>
             <div>
-              <div className="text-2xl font-bold">{formatCurrency(proposal.amount)}</div>
+              <div className="text-2xl font-bold">{formatCurrency(Number(proposal.amount))}</div>
               <div className="text-xs text-muted-foreground">Valor da proposta</div>
             </div>
           </div>

@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import { createClient } from '@/lib/supabase-client'
 import { useAuth } from '@/contexts/auth-context'
 
@@ -24,7 +24,7 @@ export function useProfile() {
   const { user } = useAuth()
   const supabase = createClient()
 
-  const fetchProfile = async () => {
+  const fetchProfile = useCallback(async () => {
     if (!user) return
 
     try {
@@ -67,7 +67,7 @@ export function useProfile() {
     } finally {
       setLoading(false)
     }
-  }
+  }, [user, supabase])
 
   const updateProfile = async (updates: Partial<UserProfile>) => {
     if (!user) return
@@ -107,7 +107,7 @@ export function useProfile() {
       const fileName = `${user.id}/${Date.now()}.${fileExt}`
       const filePath = fileName
 
-      const { data: uploadData, error: uploadError } = await supabase.storage
+      const { error: uploadError } = await supabase.storage
         .from('avatars')
         .upload(filePath, file, {
           upsert: true,
@@ -139,7 +139,7 @@ export function useProfile() {
     if (user) {
       fetchProfile()
     }
-  }, [user])
+  }, [user, fetchProfile])
 
   return {
     profile,

@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import { createClient } from '@/lib/supabase-client'
 import { useAuth } from '@/contexts/auth-context'
 
@@ -26,7 +26,7 @@ export function useDashboardStats() {
   const { user } = useAuth()
   const supabase = createClient()
 
-  const fetchStats = async () => {
+  const fetchStats = useCallback(async () => {
     if (!user) return
 
     try {
@@ -63,7 +63,7 @@ export function useDashboardStats() {
     } finally {
       setLoading(false)
     }
-  }
+  }, [user, supabase])
 
   useEffect(() => {
     if (user) {
@@ -107,7 +107,7 @@ export function useDashboardStats() {
         supabase.removeChannel(proposalsChannel)
       }
     }
-  }, [user])
+  }, [user, fetchStats, supabase])
 
   return {
     stats,

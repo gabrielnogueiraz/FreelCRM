@@ -16,7 +16,7 @@ import {
 } from '@/components/ui/dropdown-menu'
 import { useProposalsOptimized } from '@/hooks/use-proposals-optimized'
 import { useToast } from '@/hooks/use-toast'
-import { Proposal } from '@/types/database'
+import { Proposal, ProposalWithClient } from '@/types/database'
 import { ProposalCard } from './proposal-card'
 
 interface ProposalsKanbanProps {

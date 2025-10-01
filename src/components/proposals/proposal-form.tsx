@@ -54,7 +54,7 @@ export function ProposalForm({ open, onOpenChange, proposal }: ProposalFormProps
     if (proposal) {
       reset({
         title: proposal.title,
-        amount: proposal.amount,
+        amount: Number(proposal.amount),
         status: proposal.status,
         client_id: proposal.client_id,
       })
@@ -73,13 +73,13 @@ export function ProposalForm({ open, onOpenChange, proposal }: ProposalFormProps
       setIsLoading(true)
       
       if (proposal) {
-        await updateProposal(proposal.id, data)
+        await updateProposal(proposal.id, { ...data, amount: data.amount.toString() })
         toast({
           title: 'Sucesso!',
           description: 'Proposta atualizada com sucesso.',
         })
              } else {
-               await addProposal(data)
+               await addProposal({ ...data, amount: data.amount.toString(), user_id: user?.id || '' })
         toast({
           title: 'Sucesso!',
           description: 'Proposta criada com sucesso.',

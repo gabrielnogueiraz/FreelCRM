@@ -144,7 +144,7 @@ export function useClientsOptimized() {
         supabase.removeChannel(channel)
       }
     }
-  }, [user, supabase])
+  }, [user, supabase, fetchClients])
 
   return {
     clients,

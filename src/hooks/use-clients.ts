@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect, useCallback, useMemo } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import { createClient } from '@/lib/supabase-client'
 import { Client, ClientInsert, ClientUpdate } from '@/types/database'
 import { useAuth } from '@/contexts/auth-context'
@@ -12,7 +12,7 @@ export function useClients() {
   const { user } = useAuth()
   const supabase = createClient()
 
-  const fetchClients = async () => {
+  const fetchClients = useCallback(async () => {
     if (!user) return
 
     try {
@@ -31,7 +31,7 @@ export function useClients() {
     } finally {
       setLoading(false)
     }
-  }
+  }, [user, supabase])
 
   const addClient = async (clientData: ClientInsert) => {
     if (!user) return
@@ -128,7 +128,7 @@ export function useClients() {
         supabase.removeChannel(channel)
       }
     }
-  }, [user])
+  }, [user, fetchClients])
 
   return {
     clients,

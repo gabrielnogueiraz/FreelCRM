@@ -235,7 +235,7 @@ export function useProposalsOptimized() {
         supabase.removeChannel(channel)
       }
     }
-  }, [user, supabase])
+  }, [user, supabase, fetchProposals])
 
   return {
     proposals,

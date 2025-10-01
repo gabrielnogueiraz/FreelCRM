@@ -75,8 +75,8 @@ export function ClientForm({ open, onOpenChange, client }: ClientFormProps) {
           title: 'Sucesso!',
           description: 'Cliente atualizado com sucesso.',
         })
-             } else {
-               await addClient(data)
+              } else {
+                await addClient({ ...data, user_id: user?.id || '' })
         toast({
           title: 'Sucesso!',
           description: 'Cliente criado com sucesso.',

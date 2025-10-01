@@ -1,8 +1,8 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import { createClient } from '@/lib/supabase-client'
-import { Proposal, ProposalInsert, ProposalUpdate, ProposalWithClient } from '@/types/database'
+import { ProposalInsert, ProposalUpdate, ProposalWithClient } from '@/types/database'
 import { useAuth } from '@/contexts/auth-context'
 
 export function useProposals() {
@@ -12,7 +12,7 @@ export function useProposals() {
   const { user } = useAuth()
   const supabase = createClient()
 
-  const fetchProposals = async () => {
+  const fetchProposals = useCallback(async () => {
     if (!user) return
 
     try {
@@ -38,7 +38,7 @@ export function useProposals() {
     } finally {
       setLoading(false)
     }
-  }
+  }, [user, supabase])
 
   const createProposal = async (proposalData: ProposalInsert) => {
     if (!user) return
@@ -186,7 +186,7 @@ export function useProposals() {
         supabase.removeChannel(channel)
       }
     }
-  }, [user])
+  }, [user, fetchProposals])
 
   return {
     proposals,
