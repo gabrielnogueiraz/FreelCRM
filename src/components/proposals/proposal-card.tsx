@@ -90,13 +90,13 @@ export function ProposalCard({ proposal, onEdit, onDelete, isDragging = false }:
       {...attributes}
       {...listeners}
     >
-      <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-4">
+      <CardHeader className="flex flex-col sm:flex-row sm:items-center justify-between space-y-3 sm:space-y-0 pb-4">
         <div className="flex items-center gap-3">
           <div className="h-10 w-10 rounded-xl bg-primary/10 flex items-center justify-center">
             <FileText className="h-5 w-5 text-primary" />
           </div>
-          <div>
-            <CardTitle className="text-lg font-semibold leading-tight">{proposal.title}</CardTitle>
+          <div className="flex-1 min-w-0">
+            <CardTitle className="text-lg font-semibold leading-tight truncate">{proposal.title}</CardTitle>
             <CardDescription className="flex items-center gap-2 text-sm mt-1">
               <User className="h-4 w-4 flex-shrink-0" />
               <span className="truncate">{proposal.clients?.name || 'Cliente não encontrado'}</span>
@@ -104,10 +104,10 @@ export function ProposalCard({ proposal, onEdit, onDelete, isDragging = false }:
           </div>
         </div>
         
-        <div className="flex items-center gap-2">
+        <div className="flex items-center justify-between sm:justify-end gap-2">
           <span className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium border ${getStatusColor(proposal.status)}`}>
             {getStatusIcon(proposal.status)}
-            {proposal.status}
+            <span className="hidden sm:inline">{proposal.status}</span>
           </span>
           
           <DropdownMenu>
@@ -115,7 +115,7 @@ export function ProposalCard({ proposal, onEdit, onDelete, isDragging = false }:
               <Button 
                 variant="ghost" 
                 size="icon-sm" 
-                className="opacity-0 group-hover:opacity-100 transition-opacity duration-200 hover:bg-accent"
+                className="opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity duration-200 hover:bg-accent"
                 onClick={(e) => e.stopPropagation()}
               >
                 <MoreHorizontal className="h-4 w-4" />
@@ -140,28 +140,26 @@ export function ProposalCard({ proposal, onEdit, onDelete, isDragging = false }:
       </CardHeader>
       
       <CardContent className="space-y-4">
-        <div className="flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <div className="h-8 w-8 rounded-lg bg-green-500/10 flex items-center justify-center">
-              <DollarSign className="h-4 w-4 text-green-600" />
-            </div>
-            <div>
-              <div className="text-2xl font-bold">{formatCurrency(Number(proposal.amount))}</div>
-              <div className="text-xs text-muted-foreground">Valor da proposta</div>
-            </div>
+        <div className="flex items-center gap-2">
+          <div className="h-8 w-8 rounded-lg bg-green-500/10 flex items-center justify-center">
+            <DollarSign className="h-4 w-4 text-green-600" />
+          </div>
+          <div>
+            <div className="text-xl sm:text-2xl font-bold">{formatCurrency(Number(proposal.amount))}</div>
+            <div className="text-xs text-muted-foreground">Valor da proposta</div>
           </div>
         </div>
         
         <div className="pt-3 border-t border-border/50">
-          <div className="flex items-center justify-between text-sm text-muted-foreground">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-sm text-muted-foreground">
             <div className="flex items-center gap-2">
               <Calendar className="h-4 w-4" />
-              <span>Criado em {formatDate(proposal.created_at)}</span>
+              <span className="text-xs sm:text-sm">Criado em {formatDate(proposal.created_at)}</span>
             </div>
             {proposal.clients?.company && (
               <div className="flex items-center gap-1.5">
                 <Building2 className="h-3 w-3" />
-                <span className="text-xs">{proposal.clients.company}</span>
+                <span className="text-xs truncate">{proposal.clients.company}</span>
               </div>
             )}
           </div>

@@ -220,7 +220,7 @@ export function ProposalsKanban({ onEditProposal, searchTerm = '' }: ProposalsKa
 
   if (loading) {
     return (
-      <div className="grid gap-6 md:grid-cols-3">
+      <div className="grid gap-4 sm:gap-6 grid-cols-1 lg:grid-cols-3">
         {statusColumns.map((column) => (
           <div key={column.id} className="space-y-4">
             <Card className="p-4">
@@ -282,7 +282,7 @@ export function ProposalsKanban({ onEditProposal, searchTerm = '' }: ProposalsKa
       onDragStart={handleDragStart}
       onDragEnd={handleDragEnd}
     >
-      <div className="grid gap-6 md:grid-cols-3">
+      <div className="grid gap-4 sm:gap-6 grid-cols-1 lg:grid-cols-3">
         {statusColumns.map((column) => {
           const columnProposals = proposalsByStatus[column.id] || []
           
