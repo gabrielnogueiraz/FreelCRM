@@ -37,23 +37,23 @@ export default function DashboardPage() {
   return (
     <ProtectedRoute>
       <DashboardLayout>
-        <div className="space-y-8">
+        <div className="space-y-6 sm:space-y-8">
           {/* Header */}
-          <div className="flex items-center justify-between">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
             <div>
-              <h1 className="text-4xl font-bold tracking-tight">Dashboard</h1>
-              <p className="text-muted-foreground text-lg mt-2">
+              <h1 className="text-3xl sm:text-4xl font-bold tracking-tight">Dashboard</h1>
+              <p className="text-muted-foreground text-base sm:text-lg mt-2">
                 Visão geral do seu negócio
               </p>
             </div>
-            <div className="flex gap-3">
-              <Button variant="outline" asChild>
+            <div className="flex flex-col sm:flex-row gap-2 sm:gap-3">
+              <Button variant="outline" asChild className="w-full sm:w-auto">
                 <Link href="/dashboard/clients">
                   <Users className="h-4 w-4 mr-2" />
                   Clientes
                 </Link>
               </Button>
-              <Button asChild>
+              <Button asChild className="w-full sm:w-auto">
                 <Link href="/dashboard/proposals">
                   <Plus className="h-4 w-4 mr-2" />
                   Nova Proposta
@@ -63,7 +63,7 @@ export default function DashboardPage() {
           </div>
 
                  {/* Stats Grid */}
-                 <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+                 <div className="grid gap-4 sm:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
                    <AnimatedCard delay={0.1} scale>
                      <Card className="hover:shadow-lg transition-shadow duration-200">
                        <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-3">
@@ -150,7 +150,7 @@ export default function DashboardPage() {
                  </div>
 
                  {/* Recent Activity */}
-                 <div className="grid gap-6 md:grid-cols-2">
+                 <div className="grid gap-4 sm:gap-6 grid-cols-1 lg:grid-cols-2">
                    <AnimatedCard delay={0.6}>
                      <Card>
                        <CardHeader>

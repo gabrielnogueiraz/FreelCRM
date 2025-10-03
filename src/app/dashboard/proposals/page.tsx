@@ -56,23 +56,23 @@ export default function ProposalsPage() {
   return (
     <ProtectedRoute>
       <DashboardLayout>
-        <div className="space-y-8">
+        <div className="space-y-6 sm:space-y-8">
           {/* Header */}
-          <div className="flex items-center justify-between">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
             <div>
-              <h1 className="text-4xl font-bold tracking-tight">Propostas</h1>
-              <p className="text-muted-foreground text-lg mt-2">
+              <h1 className="text-3xl sm:text-4xl font-bold tracking-tight">Propostas</h1>
+              <p className="text-muted-foreground text-base sm:text-lg mt-2">
                 Gerencie seu pipeline de propostas com drag & drop
               </p>
             </div>
-            <Button onClick={() => setIsFormOpen(true)} size="lg">
+            <Button onClick={() => setIsFormOpen(true)} size="lg" className="w-full sm:w-auto">
               <Plus className="mr-2 h-5 w-5" />
               Nova Proposta
             </Button>
           </div>
 
           {/* Stats */}
-          <div className="grid gap-6 md:grid-cols-4">
+          <div className="grid gap-4 sm:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
             <Card>
               <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                 <CardTitle className="text-sm font-medium text-muted-foreground">
