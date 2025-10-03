@@ -29,8 +29,8 @@ export function DashboardLayout({ children }: DashboardLayoutProps) {
       <Navbar />
       <Sidebar />
       
-      <main className={`transition-all duration-300 ${isOpen ? 'md:ml-72' : 'md:ml-0'}`}>
-        <div className="p-8">
+      <main className={`transition-all duration-300 ${isOpen ? 'ml-72' : 'ml-0'}`}>
+        <div className="p-4 sm:p-6 lg:p-8">
           <div className="max-w-7xl mx-auto">
             {children}
           </div>
