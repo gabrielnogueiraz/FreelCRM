@@ -51,7 +51,7 @@ export function ClientsList({ onEditClient, searchTerm = '' }: ClientsListProps)
 
   if (loading) {
     return (
-      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+      <div className="grid gap-4 sm:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
         {Array.from({ length: 6 }).map((_, i) => (
           <Card key={i} className="animate-pulse">
             <CardHeader className="pb-4">
@@ -103,7 +103,7 @@ export function ClientsList({ onEditClient, searchTerm = '' }: ClientsListProps)
   }
 
   return (
-    <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+    <div className="grid gap-4 sm:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
       {filteredClients.map((client, index) => (
         <AnimatedCard key={client.id} delay={index * 0.1} scale>
           <Card className="hover:shadow-lg transition-all duration-200 group">
