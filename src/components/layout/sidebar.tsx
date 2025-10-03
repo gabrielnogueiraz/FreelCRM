@@ -30,10 +30,10 @@ export function Sidebar() {
 
   return (
     <>
-      {/* Mobile overlay */}
+      {/* Overlay */}
       {isOpen && (
         <div 
-          className="fixed inset-0 z-40 bg-background/60 backdrop-blur-sm md:hidden"
+          className="fixed inset-0 z-40 bg-background/60 backdrop-blur-sm"
           onClick={close}
         />
       )}
